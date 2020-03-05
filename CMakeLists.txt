@@ -179,7 +179,7 @@ target_include_directories(xeus-python
                            ${PYTHON_INCLUDE_DIRS}
                            $<BUILD_INTERFACE:${XEUS_PYTHON_INCLUDE_DIR}>
                            $<INSTALL_INTERFACE:include>)
-target_link_libraries(xeus-python PUBLIC xeus PRIVATE pybind11::pybind11 pybind11_json)
+target_link_libraries(xeus-python PUBLIC xeus PRIVATE pybind11::pybind11 pybind11_json nlohmann_json)
 
 if(WIN32 OR CYGWIN)
   target_link_libraries(xeus-python PRIVATE ${PYTHON_LIBRARIES})
