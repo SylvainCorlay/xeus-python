@@ -50,7 +50,7 @@ set(cppzmq_REQUIRED_VERSION 4.4.1)
 set(pybind11_REQUIRED_VERSION 2.2.4)
 set(pybind11_json_REQUIRED_VERSION 0.2.2)
 
-if(NOT TARGET xeus)
+if(NOT TARGET xeus AND NOT TARGET xeus_static)
 find_package(xeus ${xeus_REQUIRED_VERSION} REQUIRED)
 endif()
 if(NOT TARGET cppzmq)
