@@ -153,7 +153,7 @@ endif()
 # xpython is the target for the kernel executable
 add_executable(xpython ${XPYTHON_SRC})
 set_target_properties(xpython PROPERTIES ENABLE_EXPORTS 1)
-target_link_libraries(xpython PRIVATE pybind11::embed xeus xeus-python)
+target_link_libraries(xpython PRIVATE pybind11::embed xeus-static xeus-python)
 
 if(CMAKE_DL_LIBS)
     target_link_libraries(xpython PRIVATE ${CMAKE_DL_LIBS} util)
