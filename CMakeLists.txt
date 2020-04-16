@@ -408,14 +408,6 @@ if (XPYT_BUILD_XPYTHON_EXECUTABLE)
     endif ()
 endif ()
 
-# Install xpython_extension
-if (XPYT_BUILD_XPYTHON_EXTENSION)
-    install(TARGETS xpython_extension
-            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-endif ()
-
 # Configure 'xeus-pythonConfig.cmake' for a build tree
 set(XEUS_PYTHON_CONFIG_CODE "####### Expanded from \@XEUS_PYTHON_CONFIG_CODE\@ #######\n")
 set(XEUS_PYTHON_CONFIG_CODE "${XEUS_PYTHON_CONFIG_CODE}set(CMAKE_MODULE_PATH \"${CMAKE_CURRENT_SOURCE_DIR}/cmake;\${CMAKE_MODULE_PATH}\")\n")

@@ -26,6 +26,8 @@ namespace py = pybind11;
 
 void launch(const std::string& connection_filename)
 {
+    py::gil_scoped_acquire acquire;
+
     // Instantiating the xeus xinterpreter
     using interpreter_ptr = std::unique_ptr<xpyt::interpreter>;
     interpreter_ptr interpreter = interpreter_ptr(new xpyt::interpreter());
