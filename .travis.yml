@@ -12,6 +12,19 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
+      env: PY_VERSION=3.6
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+      env: PY_VERSION=3.7
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+      env: PY_VERSION=3.8
     - os: osx
       osx_image: xcode10
       compiler: clang
@@ -47,8 +60,11 @@ install:
     - conda config --set always_yes yes --set changeps1 no
     - conda config --add channels conda-forge
     - conda update -q conda
+    - if [[ "$PY_VERSION" != "" ]]; then
+        conda install python=$PY_VERSION -c conda-forge;
+      fi
     # Host dependencies
-    - conda install xeus=0.24.0 nlohmann_json cppzmq xtl pybind11=2.5.0 pybind11_json=0.2.6 jedi=0.15.1 pygments=2.3.1 ipython=7.14.0 ptvsd -c conda-forge
+    - conda install xeus=0.24.1 nlohmann_json cppzmq xtl pybind11=2.5.0 pybind11_json=0.2.6 jedi=0.15.1 pygments=2.3.1 ipython=7.14.0 ptvsd -c conda-forge
     # Build dependencies
     - conda install cmake -c conda-forge
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
@@ -56,6 +72,7 @@ install:
       fi
     # Test dependencies
     - conda install pytest jupyter_kernel_test -c conda-forge;
+    - conda list
     - pip install example_magic
     # Activate root environment
     - source activate root
